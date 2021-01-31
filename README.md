@@ -1,1 +1,1 @@
-Effector
+Glucose daily tracking tool
