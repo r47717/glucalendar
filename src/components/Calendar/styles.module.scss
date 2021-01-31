@@ -1,0 +1,55 @@
+.container {
+  display: inline-block;
+
+  .title {
+    position: relative;
+    padding-bottom: 30px;
+    font-size: 2em;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: 700;
+    text-align: center;
+
+    .titleControls {
+      position: absolute;
+      top: 0;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .titlePrev {
+      left: 0;
+    }
+
+    .titleNext {
+      right: 0;
+    }
+  }
+
+  .cells {
+    display: inline-grid;
+    grid-gap: 2px;
+    grid-template-columns: auto auto auto auto auto auto auto;
+  }
+}
+
+.menuItems {
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  z-index: 3000;
+
+  & > div {
+    cursor: pointer;
+    padding: 8px 12px;
+  }
+
+  & > div:hover {
+    background: #dddddd;
+  }
+
+  .contextMenuDevider {
+    background: #ffffff;
+    border-bottom: 1px solid #cccccc;
+    padding: 0;
+  }
+}

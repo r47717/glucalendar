@@ -1,0 +1,15 @@
+textarea.editor {
+  position: absolute;
+  z-index: 1000;
+  background: #ffffff;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
