@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./styles.module.scss";
 import cn from "classnames";
 import Editor from "../Editor";
+import { MEASURE_EXCEED } from "../../utils";
 
 type DayProps = {
   day: number;
@@ -10,8 +11,6 @@ type DayProps = {
   measures: string;
   updateMeasure: (update: string) => void;
 };
-
-const MEASURE_EXCEED = 5.5;
 
 function Day({ day, previous, next, measures, updateMeasure }: DayProps) {
   const [editor, setEditor] = useState<null | { day: number; content: string }>(
