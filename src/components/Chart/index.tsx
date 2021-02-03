@@ -12,6 +12,7 @@ import {
 
 import store from "../../store";
 import { buildChartData, MEASURE_EXCEED } from "../../utils";
+import styles from "./styles.module.scss";
 
 type Props = {
   month: number;
@@ -26,10 +27,11 @@ function Chart({ month, year }: Props) {
   );
 
   return (
-    <div>
+    <div className={styles.chartContainer}>
       {chartData.length > 0 && (
         <BarChart
-          width={700}
+          className={styles.chartWrapper}
+          width={750}
           height={300}
           data={chartData}
           margin={{

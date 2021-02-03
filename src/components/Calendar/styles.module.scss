@@ -3,7 +3,7 @@
 
   .title {
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: 1.2em;
     font-size: 2em;
     text-decoration: underline;
     font-style: italic;
@@ -40,7 +40,7 @@
 
   & > div {
     cursor: pointer;
-    padding: 8px 12px;
+    padding: 0.6em 1em;
   }
 
   & > div:hover {

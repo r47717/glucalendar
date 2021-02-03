@@ -42,31 +42,39 @@ const initialValues: Store = {
   monthDays: generateMonthDays(todaysMonth, todaysYear),
 };
 
-console.log(initialValues);
-
 const store = createStore(initialValues)
   .on(editMeasure, (state: Store, { measures, date }: DayMeasures) => {
-    const found = state.measures.find((item) => item.date.isSame(date));
-    let newState: Store;
+    const found = !!state.measures.find((item) => item.date.isSame(date));
 
-    if (found) {
-      newState = {
+    // clean the entry up if empty input
+    if (found && measures.replace(/\s+/g, "") === "") {
+      return {
         ...state,
-        measures: state.measures.map((item) =>
-          item.date.isSame(date)
-            ? {
-                ...item,
-                measures,
-              }
-            : item
-        ),
-      };
-    } else {
-      newState = {
-        ...state,
-        measures: [...state.measures, { date, measures }],
+        measures: state.measures.filter((item) => !item.date.isSame(date)),
       };
     }
+
+    // no new entry if empty input
+    if (!found && measures.replace(/\s+/g, "") === "") {
+      return state;
+    }
+
+    let newState: Store = found
+      ? {
+          ...state,
+          measures: state.measures.map((item) =>
+            item.date.isSame(date)
+              ? {
+                  ...item,
+                  measures,
+                }
+              : item
+          ),
+        }
+      : {
+          ...state,
+          measures: [...state.measures, { date, measures }],
+        };
 
     saveData(newState); // TODO: side effect
 

@@ -21,9 +21,12 @@ function Editor({ content, onBlur }: Props) {
       ref={ref}
       className={styles.editor}
       value={value}
-      onChange={(e: ChangeEvent<HTMLTextAreaElement>) =>
-        setValue(e.target.value)
-      }
+      onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+        const { value } = e.target;
+        if (!value.split(/\s+/).map(Number).some(Number.isNaN)) {
+          setValue(value);
+        }
+      }}
       onBlur={() => onBlur(value)}
     />
   );
