@@ -14,6 +14,7 @@ type StoredData = {
 
 export function saveData(state: Store) {
   if (state.measures.length === 0) {
+    clearData();
     return;
   }
   const dataToSave = state.measures.map(({ date, measures }) => ({

@@ -44,37 +44,47 @@ const initialValues: Store = {
 
 const store = createStore(initialValues)
   .on(editMeasure, (state: Store, { measures, date }: DayMeasures) => {
-    const found = !!state.measures.find((item) => item.date.isSame(date));
+    const found = !!state.measures.find((item) =>
+      item.date.isSame(date, "day")
+    );
 
-    // clean the entry up if empty input
-    if (found && measures.replace(/\s+/g, "") === "") {
-      return {
-        ...state,
-        measures: state.measures.filter((item) => !item.date.isSame(date)),
-      };
-    }
+    let newState: Store = state;
 
     // no new entry if empty input
     if (!found && measures.replace(/\s+/g, "") === "") {
       return state;
     }
 
-    let newState: Store = found
-      ? {
+    if (found) {
+      if (measures.replace(/\s+/g, "") === "") {
+        // clean the entry up if empty input
+        newState = {
+          ...state,
+          measures: state.measures.filter(
+            (item) => !item.date.isSame(date, "day")
+          ),
+        };
+      } else {
+        // update existing entry
+        newState = {
           ...state,
           measures: state.measures.map((item) =>
-            item.date.isSame(date)
+            item.date.isSame(date, "day")
               ? {
                   ...item,
                   measures,
                 }
               : item
           ),
-        }
-      : {
-          ...state,
-          measures: [...state.measures, { date, measures }],
         };
+      }
+    } else {
+      // add new entry
+      newState = {
+        ...state,
+        measures: [...state.measures, { date, measures }],
+      };
+    }
 
     saveData(newState); // TODO: side effect
 

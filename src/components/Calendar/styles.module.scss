@@ -1,35 +1,108 @@
 .container {
   display: inline-block;
 
-  .title {
+  .banner {
     position: relative;
-    padding-bottom: 1.2em;
-    font-size: 2em;
-    text-decoration: underline;
-    font-style: italic;
-    font-weight: 700;
-    text-align: center;
+    overflow: hidden;
+    background: #f3f7fa;
+    border-radius: 1.3em;
+    padding: 3em;
+    margin-bottom: 2em;
+    background: linear-gradient(
+      258.85deg,
+      #f3f7fa 20.67%,
+      #e9effb 39.74%,
+      #edf2fb 54.7%,
+      #f3f7fa 81.68%
+    );
 
-    .titleControls {
+    img.leftImage {
       position: absolute;
       top: 0;
-      cursor: pointer;
-      user-select: none;
+      left: -9em;
+      height: 12em;
     }
 
-    .titlePrev {
-      left: 0;
+    img.rightImage {
+      position: absolute;
+      top: 0;
+      right: -7.5em;
+      height: 12em;
     }
+  }
 
-    .titleNext {
-      right: 0;
+  h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1em;
+    font-weight: 400;
+    margin-top: 0.5em;
+    text-align: center;
+  }
+
+  .title {
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 2em;
+
+    .leftGroup {
+      display: flex;
+      align-items: center;
+
+      h2.selectedMonth {
+        font-size: 1.6em;
+        margin: 0;
+      }
+
+      .leftArrow {
+        cursor: pointer;
+        margin-left: 2em;
+      }
+
+      .rightArrow {
+        cursor: pointer;
+        margin-left: 0.2em;
+      }
+
+      .todayDate {
+        margin-left: auto;
+        font-weight: 400;
+        font-size: 1.3em;
+      }
     }
   }
 
   .cells {
     display: inline-grid;
-    grid-gap: 2px;
+    padding: 1em;
+    box-shadow: 0px 10px 40px 5px rgba(238, 243, 251, 0.5);
+    border-radius: 30px;
+    grid-gap: 1em;
     grid-template-columns: auto auto auto auto auto auto auto;
+    position: relative;
+
+    .headerMonth {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: #a9a6bc;
+      text-align: center;
+      padding-bottom: 2.5em;
+    }
+
+    .delimiter {
+      position: absolute;
+      border-top: 1px solid #efefef;
+      height: 1px;
+      top: 4em;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
   }
 }
 

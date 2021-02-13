@@ -1,22 +1,35 @@
 .container {
   display: inline-block;
   box-sizing: border-box;
-  width: 7em;
-  height: 7em;
-  border: 1px solid #aaaaaa;
+  width: 7.5em;
+  height: 7.5em;
+  border: none;
+  border-radius: 1.5em;
   position: relative;
+  background: #ebfaf4;
+
+  &.previous {
+    background-color: ebfaf4;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 20px,
+      white 15px,
+      white 35px
+    );
+  }
+
+  &.today {
+    background: #e9effb;
+  }
 
   .number {
     position: absolute;
-    width: 2em;
-    height: 2em;
-    text-align: center;
-    line-height: 2;
+    top: 0.4em;
+    left: 0.6em;
+    font-size: 1.1em;
     z-index: 2000;
-    top: -0.5em;
-    right: -0.5em;
-    background: blue;
-    color: #ffffff;
+    color: #a5aac4;
     border-radius: 50%;
     user-select: none;
   }
@@ -27,11 +40,12 @@
 
   .measures {
     position: absolute;
-    top: 10%;
-    left: 10%;
-    right: 10%;
-    bottom: 10%;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+    bottom: 20%;
     text-align: center;
+    z-index: 300;
 
     .measure {
       color: blue;
@@ -46,5 +60,19 @@
       font-weight: 700;
       font-size: 1.4em;
     }
+  }
+
+  .todayNotice {
+    position: absolute;
+    color: #2a2650;
+    font-weight: 600;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
   }
 }

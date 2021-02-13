@@ -10,23 +10,30 @@ type DayProps = {
   next: boolean;
   measures: string;
   updateMeasure: (update: string) => void;
+  today: boolean;
 };
 
-function Day({ day, previous, next, measures, updateMeasure }: DayProps) {
+function Day({
+  day,
+  previous,
+  next,
+  measures,
+  updateMeasure,
+  today = false,
+}: DayProps) {
   const [editor, setEditor] = useState<null | { day: number; content: string }>(
     null
   );
 
   return (
-    <div className={styles.container}>
-      <div
-        className={cn({
-          [styles.number]: true,
-          [styles.previous]: previous || next,
-        })}
-      >
-        {day}
-      </div>
+    <div
+      className={cn({
+        [styles.container]: true,
+        [styles.previous]: previous || next,
+        [styles.today]: today,
+      })}
+    >
+      <div className={styles.number}>{day}</div>
 
       <div
         className={styles.measures}
@@ -59,6 +66,9 @@ function Day({ day, previous, next, measures, updateMeasure }: DayProps) {
           />
         )}
       </div>
+      {today && measures.length === 0 && (
+        <div className={styles.todayNotice}>Fill me in!</div>
+      )}
     </div>
   );
 }

@@ -49,11 +49,11 @@ function Chart({ month, year }: Props) {
             {chartData.map(({ value }, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={value > MEASURE_EXCEED ? "red" : "#82ca9d"}
+                fill={value > MEASURE_EXCEED ? "#FFAEA8" : "#ABED8C"}
               />
             ))}
           </Bar>
-          <Bar dataKey="norm" name="Normal" fill="#8884d8" />
+          <Bar dataKey="norm" name="Normal" fill="#FFF4BF" />
         </BarChart>
       )}
     </div>
